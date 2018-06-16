@@ -1,0 +1,32 @@
+<%= form_with(model: @contact, local: true) do |form| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @contact.errors.count %>件のエラーがあります。</h2>
+      <ul>
+
+      <% @contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="blog_title">
+    <div><%= form.label :Name %></div>
+    <%= form.text_field :name %>
+  </div>
+  <div class="blog_title">
+    <div><%= form.label :Email %></div>
+    <%= form.text_field :email %>
+  </div>
+  <div>
+    <div><%= form.label :Content %></div>
+    <%= form.text_field :content %>
+  </div>
+  <%= form.submit %>
+<% end %>
+
+<%= link_to "ブログ一覧画面に戻る", contacts_path %>
+
+
+

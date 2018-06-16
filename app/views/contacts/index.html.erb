@@ -1,0 +1,22 @@
+<h1>ブログ一覧</h1>
+
+<table>
+  <tr>
+    <th>名前</th>
+    <th>アドレス</th>
+    <th>内容</th>
+  </tr>
+
+<% @contacts.each do |blog| %>
+  <tr>
+    <td><%= blog.name %></td>
+    <td><%= blog.email %></td>
+    <td><%= blog.content %></td>
+    <td><%= link_to '詳細の確認', contact_path(blog.id) %></td>
+    <td><%= link_to "ブログを編集する", edit_contact_path(blog.id),data:{confirm:'本当に編集していいですか？'} %></td>
+    <td><%= link_to 'ブログを削除する', contact_path(blog.id),method: :delete,data: { confirm: '本当に削除していいですか？' } %></td>
+<% end %>
+</table>
+<br>
+
+<%= link_to 'お問い合わせ投稿', new_contact_path %>
