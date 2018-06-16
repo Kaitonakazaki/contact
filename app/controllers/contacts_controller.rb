@@ -13,7 +13,7 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     if @contact.save
-      redirect_to new_contact_path, notice: "ブログを作成しました！"
+      redirect_to contacts_path, notice: "ブログを作成しました！"
     else 
       render :new
     end
@@ -29,7 +29,7 @@ class ContactsController < ApplicationController
   
   def update
     @contact = Contact.find(params[:id])
-    if @contact.update(blog_params)
+    if @contact.update(contact_params)
       redirect_to contacts_path, notice: "ブログを編集しました！"
     else 
       render 'edit'
